@@ -5,7 +5,7 @@
  * @version 0.1
  */
 
-namespace simialbi\yii2;
+namespace simialbi\yii2\base;
 
 /**
  * Class Module

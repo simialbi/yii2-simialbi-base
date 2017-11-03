@@ -5,14 +5,14 @@
  * @version 0.1
  */
 
-namespace simialbi\yii2;
+namespace simialbi\yii2\widgets;
 
 /**
- * Class AssetBundle
+ * Class Widget
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1
  */
-class AssetBundle extends \yii\web\AssetBundle {
+class Widget extends \yii\base\Widget {
 
 }

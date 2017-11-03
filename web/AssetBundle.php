@@ -5,14 +5,14 @@
  * @version 0.1
  */
 
-namespace simialbi\yii2;
+namespace simialbi\yii2\web;
 
 /**
- * Class InputWidget
+ * Class AssetBundle
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1
  */
-class InputWidget extends \yii\widgets\InputWidget {
+class AssetBundle extends \yii\web\AssetBundle {
 
 }

@@ -5,14 +5,14 @@
  * @version 0.1
  */
 
-namespace simialbi\yii2;
+namespace simialbi\yii2\widgets;
 
 /**
- * Class Widget
+ * Class InputWidget
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1
  */
-class Widget extends \yii\base\Widget {
+class InputWidget extends \yii\widgets\InputWidget {
 
 }
