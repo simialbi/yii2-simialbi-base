@@ -7,6 +7,8 @@
 
 namespace simialbi\yii2\base;
 
+use simialbi\yii2\i18n\TranslationTrait;
+
 /**
  * Class Module
  *
@@ -14,5 +16,5 @@ namespace simialbi\yii2\base;
  * @since 0.1
  */
 class Module extends \yii\base\Module {
-
+	use TranslationTrait;
 }

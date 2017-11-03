@@ -6,6 +6,7 @@
  */
 
 namespace simialbi\yii2\widgets;
+use simialbi\yii2\i18n\TranslationTrait;
 use yii\helpers\Json;
 use yii\helpers\StringHelper;
 
@@ -16,6 +17,8 @@ use yii\helpers\StringHelper;
  * @since 0.1
  */
 class InputWidget extends \yii\widgets\InputWidget {
+	use TranslationTrait;
+
 	/**
 	 * @var array the options for the underlying JS plugin.
 	 */
