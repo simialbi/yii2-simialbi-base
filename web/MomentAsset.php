@@ -8,7 +8,7 @@
 namespace simialbi\yii2\web;
 
 /**
- * Class MomentAsset
+ * MomentAsset
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1

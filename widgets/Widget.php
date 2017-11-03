@@ -12,7 +12,7 @@ use yii\helpers\Json;
 use yii\helpers\StringHelper;
 
 /**
- * Class Widget
+ * Widget base class skeleton
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1

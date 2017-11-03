@@ -10,7 +10,7 @@ namespace simialbi\yii2\base;
 use simialbi\yii2\i18n\TranslationTrait;
 
 /**
- * Class Module
+ * Module skeleton
  *
  * @author Simon Karlen <simi.albi@gmail.com>
  * @since 0.1
