@@ -54,7 +54,7 @@ class Widget extends \yii\base\Widget {
 		$view = $this->view;
 
 		$className      = static::className();
-		$assetClassName = str_replace('widgets/', '', $className."Asset");
+		$assetClassName = str_replace('widgets\\', '', $className."Asset");
 		if (empty($pluginName)) {
 			$pluginName = strtolower(StringHelper::basename($className));
 		}
