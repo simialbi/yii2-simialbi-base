@@ -6,7 +6,9 @@
  */
 
 namespace simialbi\yii2\widgets;
+
 use simialbi\yii2\i18n\TranslationTrait;
+use yii\bootstrap\Html;
 use yii\helpers\Json;
 use yii\helpers\StringHelper;
 
@@ -38,7 +40,7 @@ class InputWidget extends \yii\widgets\InputWidget {
 	 */
 	public function init() {
 		if (!isset($this->options['id'])) {
-			$this->options['id'] = $this->getId();
+			$this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->getId();
 		}
 		parent::init();
 	}
