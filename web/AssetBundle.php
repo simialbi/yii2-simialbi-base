@@ -19,7 +19,9 @@ class AssetBundle extends \yii\web\AssetBundle {
 	 */
 	public function init() {
 		if (!isset($this->sourcePath)) {
-			$this->sourcePath = __DIR__.'/assets';
+			$reflector        = new \ReflectionClass(static::className());
+			$dir              = rtrim(dirname($reflector->getFileName()), '\\/').DIRECTORY_SEPARATOR.'assets';
+			$this->sourcePath = $dir;
 		}
 
 		parent::init();
