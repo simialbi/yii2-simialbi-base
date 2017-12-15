@@ -14,5 +14,14 @@ namespace simialbi\yii2\web;
  * @since 0.1
  */
 class AssetBundle extends \yii\web\AssetBundle {
+	/**
+	 * @inheritdoc
+	 */
+	public function init() {
+		if (!isset($this->sourcePath)) {
+			$this->sourcePath = __DIR__.'/assets';
+		}
 
+		parent::init();
+	}
 }
