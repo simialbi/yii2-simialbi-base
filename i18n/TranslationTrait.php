@@ -24,7 +24,7 @@ trait TranslationTrait {
 		$reflector = new \ReflectionClass(parent::className());
 		$dir       = rtrim(dirname($reflector->getFileName()), '\\/').DIRECTORY_SEPARATOR.'messages';
 		$category  = str_replace(StringHelper::basename(parent::className()), '', parent::className());
-		$category  = rtrim(str_replace(['\\', 'yii2/'], ['/', ''], $category), '/').'/*';
+		$category  = rtrim(str_replace(['\\', 'yii2/'], ['/', ''], $category), '/').'*';
 
 		if (!is_dir($dir)) {
 			return;
