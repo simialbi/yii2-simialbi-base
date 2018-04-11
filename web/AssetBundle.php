@@ -15,7 +15,7 @@ namespace simialbi\yii2\web;
  */
 class AssetBundle extends \yii\web\AssetBundle {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function init() {
 		if (!isset($this->sourcePath)) {

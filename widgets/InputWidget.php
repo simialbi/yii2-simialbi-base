@@ -8,7 +8,7 @@
 namespace simialbi\yii2\widgets;
 
 use simialbi\yii2\i18n\TranslationTrait;
-use yii\bootstrap\Html;
+use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\StringHelper;
 
@@ -31,12 +31,13 @@ class InputWidget extends \yii\widgets\InputWidget {
 	public $clientEvents = [];
 	/**
 	 * @var array the HTML attributes for the widget container tag.
-	 * @see \yii\bootstrap\Html::renderTagAttributes() for details on how attributes are being rendered.
+	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
 	public $options = [];
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
+	 * @throws \yii\base\InvalidConfigException
 	 */
 	public function init() {
 		if (!isset($this->options['id'])) {

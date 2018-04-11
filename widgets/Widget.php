@@ -30,12 +30,12 @@ class Widget extends \yii\base\Widget {
 	public $clientEvents = [];
 	/**
 	 * @var array the HTML attributes for the widget container tag.
-	 * @see \yii\bootstrap\Html::renderTagAttributes() for details on how attributes are being rendered.
+	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
 	public $options = [];
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function init() {
 		if (!isset($this->options['id'])) {

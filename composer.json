@@ -25,7 +25,6 @@
 	"prefer-stable": true,
 	"require": {
 		"yiisoft/yii2": "~2.0",
-		"yiisoft/yii2-bootstrap": "~2.0",
 		"npm-asset/moment": "~2.18"
 	},
 	"config": {
