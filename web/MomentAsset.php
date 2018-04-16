@@ -17,7 +17,7 @@ class MomentAsset extends AssetBundle {
 	/**
 	 * @var string the directory that contains the source asset files for this asset bundle.
 	 */
-	public $sourcePath = '@npm/moment/min';
+	public $sourcePath = '@bower/moment/min';
 
 	/**
 	 * @var array list of JavaScript files that this bundle contains.

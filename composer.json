@@ -25,15 +25,12 @@
 	"prefer-stable": true,
 	"require": {
 		"yiisoft/yii2": "~2.0",
-		"npm-asset/moment": "~2.18"
+		"bower-asset/moment": "~2.22"
 	},
 	"config": {
 		"process-timeout": 1800,
 		"fxp-asset": {
-			"installer-paths": {
-				"npm-asset-library": "vendor/npm",
-				"bower-asset-library": "vendor/bower"
-			}
+			"enabled": false
 		}
 	},
 	"autoload": {
