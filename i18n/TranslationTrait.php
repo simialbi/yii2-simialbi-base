@@ -7,8 +7,8 @@
 
 namespace simialbi\yii2\i18n;
 
-use yii\helpers\StringHelper;
 use Yii;
+use yii\helpers\StringHelper;
 
 /**
  * TranslationTrait provides methods for translation usage in all simialbi extensions
@@ -19,12 +19,14 @@ use Yii;
 trait TranslationTrait {
 	/**
 	 * Init translations
+	 * @throws \ReflectionException
 	 */
 	public function registerTranslations() {
-		$reflector = new \ReflectionClass(parent::className());
-		$dir       = rtrim(dirname($reflector->getFileName()), '\\/').DIRECTORY_SEPARATOR.'messages';
-		$category  = str_replace(StringHelper::basename(parent::className()), '', parent::className());
-		$category  = rtrim(str_replace(['\\', 'yii2/'], ['/', ''], $category), '/').'*';
+		$reflector = new \ReflectionClass(parent::class);
+		$dir       = rtrim(dirname($reflector->getFileName()), '\\/');
+		$dir       = rtrim(preg_replace('#widgets$#', '', $dir), '\\/') . DIRECTORY_SEPARATOR . 'messages';
+		$category  = str_replace(StringHelper::basename(parent::class), '', parent::class);
+		$category  = rtrim(str_replace(['\\', 'yii2/', 'widgets', 'models'], ['/', ''], $category), '/') . '*';
 
 		if (!is_dir($dir)) {
 			return;
