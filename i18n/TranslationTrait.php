@@ -22,10 +22,10 @@ trait TranslationTrait {
 	 * @throws \ReflectionException
 	 */
 	public function registerTranslations() {
-		$reflector = new \ReflectionClass(parent::class);
+		$reflector = new \ReflectionClass(static::class);
 		$dir       = rtrim(dirname($reflector->getFileName()), '\\/');
 		$dir       = rtrim(preg_replace('#widgets$#', '', $dir), '\\/') . DIRECTORY_SEPARATOR . 'messages';
-		$category  = str_replace(StringHelper::basename(parent::class), '', parent::class);
+		$category  = str_replace(StringHelper::basename(static::class), '', static::class);
 		$category  = rtrim(str_replace(['\\', 'yii2/', 'widgets', 'models'], ['/', ''], $category), '/') . '*';
 
 		if (!is_dir($dir)) {
