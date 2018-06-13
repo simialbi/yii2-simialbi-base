@@ -25,7 +25,8 @@
 	"prefer-stable": true,
 	"require": {
 		"yiisoft/yii2": "~2.0",
-		"bower-asset/moment": "~2.22"
+		"bower-asset/moment": "~2.22",
+		"bower-asset/animate.css": "~3.5"
 	},
 	"config": {
 		"process-timeout": 1800,
