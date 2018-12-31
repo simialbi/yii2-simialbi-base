@@ -1,7 +1,7 @@
 <?php
 /**
  * @package yii2-simialbi-base
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @author Simon Karlen <simi.albi@outlook.com>
  * @version 0.1
  */
 
@@ -17,7 +17,7 @@ use Yii;
  *
  * @author Carsten Brandt <mail@cebe.cc>
  * @author Enrica Ruedin <e.ruedin@guggach.com>
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @author Simon Karlen <simi.albi@outlook.com>
  * @since 0.1
  */
 class FormatConverter extends \yii\helpers\FormatConverter {

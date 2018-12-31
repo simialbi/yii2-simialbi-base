@@ -1,8 +1,7 @@
 <?php
 /**
  * @package yii2-simialbi-base
- * @author Simon Karlen <simi.albi@outlook.com>
- * @version 0.1
+ * @author Simon Karlen <simi.albi@gmail.com>
  */
 
 namespace simialbi\yii2\web;
@@ -11,19 +10,19 @@ namespace simialbi\yii2\web;
  * MomentAsset
  *
  * @author Simon Karlen <simi.albi@outlook.com>
- * @since 0.1
+ * @since 0.3.2
  */
-class MomentAsset extends AssetBundle {
+class MomentTimezoneAsset extends AssetBundle {
 	/**
 	 * @var string the directory that contains the source asset files for this asset bundle.
 	 */
-	public $sourcePath = '@bower/moment/min';
+	public $sourcePath = '@bower/moment-timezone/builds';
 
 	/**
 	 * @var array list of JavaScript files that this bundle contains.
 	 */
 	public $js = [
-		'moment-with-locales.min.js'
+		'moment-timezone-with-data.min.js'
 	];
 
 	/**
@@ -32,5 +31,12 @@ class MomentAsset extends AssetBundle {
 	 */
 	public $publishOptions = [
 		'forceCopy' => YII_DEBUG
+	];
+
+    /**
+	 * @var array list of bundle class names that this bundle depends on.
+	 */
+	public $depends = [
+		'simialbi\yii2\web\MomentAsset'
 	];
 }

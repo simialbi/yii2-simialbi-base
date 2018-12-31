@@ -1,7 +1,7 @@
 <?php
 /**
  * @package yii2-simialbi-base
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @author Simon Karlen <simi.albi@outlook.com>
  * @version 0.1
  */
 
@@ -15,7 +15,7 @@ use yii\helpers\StringHelper;
 /**
  * InputWidget base class skeleton
  *
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @author Simon Karlen <simi.albi@outlook.com>
  * @since 0.1
  */
 class InputWidget extends \yii\widgets\InputWidget {

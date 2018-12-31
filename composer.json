@@ -18,14 +18,16 @@
 	"authors": [
 		{
 			"name": "Simon Karlen",
-			"email": "simi.albi@gmail.com"
+			"email": "simi.albi@outlook.com"
 		}
 	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
+		"ext-intl": "*",
 		"yiisoft/yii2": "~2.0",
-		"bower-asset/moment": "~2.22",
+		"bower-asset/moment": "^2.23.0",
+		"bower-asset/moment-timezone": "^0.5.23",
 		"bower-asset/animate.css": "~3.5"
 	},
 	"config": {
