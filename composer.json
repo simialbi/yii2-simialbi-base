@@ -30,6 +30,9 @@
 		"bower-asset/moment-timezone": "^0.5.23",
 		"bower-asset/animate.css": "~3.5"
 	},
+	"suggest": {
+		"bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version ^4.2.0)"
+	},
 	"config": {
 		"process-timeout": 1800,
 		"fxp-asset": {
@@ -44,7 +47,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"simialbi\\yii2\\": ""
+			"simialbi\\yii2\\": "src"
 		}
 	}
 }
