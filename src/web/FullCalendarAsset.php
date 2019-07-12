@@ -32,6 +32,7 @@ class FullCalendarAsset extends AssetBundle {
 		'timegrid/main.js',
 		'list/main.js',
 		'bootstrap/main.js',
+		'interaction/main.js',
 		'core/locales-all.js'
 	];
 	/**
