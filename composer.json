@@ -31,7 +31,7 @@
 		"bower-asset/animate.css": "~3.5"
 	},
 	"suggest": {
-		"bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version ^4.2.0)"
+		"bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version 4.2.0)"
 	},
 	"config": {
 		"process-timeout": 1800,
