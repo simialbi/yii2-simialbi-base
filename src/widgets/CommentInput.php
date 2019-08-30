@@ -33,7 +33,7 @@ class CommentInput extends InputWidget {
 	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
 	public $buttonOptions = [
-		['class' => ['btn', 'btn-primary']]
+		'class' => ['btn', 'btn-primary']
 	];
 
 	/**
