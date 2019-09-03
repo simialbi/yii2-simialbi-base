@@ -39,6 +39,11 @@ use yii\web\IdentityInterface;
  *         return $this->name;
  *     }
  *
+ *     public function getEmail()
+ *     {
+ *         return $this->email;
+ *     }
+ *
  *     public function getId()
  *     {
  *         return $this->id;
@@ -58,6 +63,7 @@ use yii\web\IdentityInterface;
  *
  * @property-read string|null $name
  * @property-read string|null $image
+ * @property-read string $email
  *
  * @author Simoin Karlen <simi.albi@outlook.com>
  * @since 0.6.0
@@ -65,16 +71,23 @@ use yii\web\IdentityInterface;
 interface UserInterface extends IdentityInterface
 {
 	/**
-	 * Returns an a users profile image.
+	 * Returns a users profile image.
 	 * @return string|null A users profile image.
 	 */
 	public function getImage();
 
 	/**
-	 * Returns an a users name (first and last name or username).
+	 * Returns a users name (first and last name or username).
 	 * @return string|null A users name.
 	 */
 	public function getName();
+
+	/**
+	 * Returns a users email address
+	 * @retun string
+	 * @since 0.8.0
+	 */
+	public function getEmail();
 
 	/**
 	 * Returns a list of users that can be used in assignments
