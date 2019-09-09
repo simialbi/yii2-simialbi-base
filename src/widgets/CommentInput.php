@@ -12,6 +12,10 @@ use yii\helpers\Html;
 
 class CommentInput extends InputWidget {
 	/**
+	 * @var string optional template to render the input group content
+	 */
+	public $template = '{beginWrapper}{image}{input}{submit}{endWrapper}';
+	/**
 	 * @var string User image (optional)
 	 */
 	public $image;
@@ -29,42 +33,62 @@ class CommentInput extends InputWidget {
 		]
 	];
 	/**
+	 * @var array the HTML attributes for the image wrapper tag.
+	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+	 */
+	public $imageWrapperOptions = [
+		'class' => ['input-group-prepend']
+	];
+	/**
 	 * @var array the HTML attributes for the button tag. You can override `icon` property to set button content.
 	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
 	 */
 	public $buttonOptions = [
 		'class' => ['btn', 'btn-primary']
 	];
+	/**
+	 * @var array the HTML attributes for the button wrapper tag.
+	 * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+	 */
+	public $buttonWrapperOptions = [
+		'class' => ['input-group-append']
+	];
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function run() {
+		$template      = $this->template;
 		$options       = $this->options;
 		$buttonOptions = $this->buttonOptions;
 		ArrayHelper::setValue($options, 'style.height', '0');
 		ArrayHelper::setValue($options, 'style.min-height', '2.5rem');
 
-		$icon = ArrayHelper::remove($buttonOptions, 'icon', '🖅');
+		$icon   = ArrayHelper::remove($buttonOptions, 'icon', '🖅');
+		$image  = '';
 
-		$html = Html::beginTag('div', ['class' => 'input-group']);
 		if ($this->image) {
-			$html .= Html::beginTag('div', ['class' => 'input-group-prepend']);
-			$html .= Html::img($this->image, $this->imageOptions);
-			$html .= Html::endTag('div');
+			$image = Html::beginTag('div', $this->imageWrapperOptions);
+			$image .= Html::img($this->image, $this->imageOptions);
+			$image .= Html::endTag('div');
 		}
 		if ($this->hasModel()) {
-			$html .= Html::activeTextarea($this->model, $this->attribute, $options);
+			$input = Html::activeTextarea($this->model, $this->attribute, $options);
 		} else {
-			$html .= Html::textarea($this->name, $this->value, $options);
+			$input = Html::textarea($this->name, $this->value, $options);
 		}
-		$html .= Html::beginTag('div', ['class' => 'input-group-append']);
-		$html .= Html::submitButton($icon, $buttonOptions);
-		$html .= Html::endTag('div');
-		$html .= Html::endTag('div');
+		$button = Html::beginTag('div', $this->buttonWrapperOptions);
+		$button .= Html::submitButton($icon, $buttonOptions);
+		$button .= Html::endTag('div');
 		$this->registerPlugin();
 
-		return $html;
+		return strtr($template, [
+			'{beginWrapper}' => Html::beginTag('div', ['class' => 'input-group']),
+			'{image}'        => $image,
+			'{input}'        => $input,
+			'{submit}'       => $button,
+			'{endWrapper}'   => Html::endTag('div')
+		]);
 	}
 
 	/**
