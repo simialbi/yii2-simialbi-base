@@ -17,6 +17,11 @@ class BaseAsset extends AssetBundle {
 	/**
 	 * {@inheritDoc}
 	 */
+	public $sourcePath = '@simialbi/assets';
+
+	/**
+	 * {@inheritDoc}
+	 */
  	public $js = [
  		'js/sa.js'
 	];
@@ -25,6 +30,7 @@ class BaseAsset extends AssetBundle {
 	 * {@inheritDoc}
 	 */
  	public $depends = [
- 		'yii\web\JqueryAsset'
+ 		'yii\web\JqueryAsset',
+		'yii\web\YiiAsset'
 	];
 }
