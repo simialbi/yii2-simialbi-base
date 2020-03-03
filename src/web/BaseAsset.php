@@ -17,7 +17,7 @@ class BaseAsset extends AssetBundle {
 	/**
 	 * {@inheritDoc}
 	 */
-	public $sourcePath = '@simialbi/assets';
+	public $sourcePath = '@simialbi/yii2/assets';
 
 	/**
 	 * {@inheritDoc}
