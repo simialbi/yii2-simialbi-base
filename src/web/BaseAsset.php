@@ -5,9 +5,7 @@
  * @copyright Copyright © 2020 Simon Karlen
  */
 
-namespace simialbi\yii2;
-
-use simialbi\yii2\web\AssetBundle;
+namespace simialbi\yii2\web;
 
 /**
  * AssetBundle providing base scripts and styles
