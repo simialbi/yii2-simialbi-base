@@ -70,28 +70,28 @@ use yii\web\IdentityInterface;
  */
 interface UserInterface extends IdentityInterface
 {
-	/**
-	 * Returns a users profile image.
-	 * @return string|null A users profile image.
-	 */
-	public function getImage();
+    /**
+     * Returns a list of users that can be used in assignments
+     * @return static[]
+     */
+    public static function findIdentities();
 
-	/**
-	 * Returns a users name (first and last name or username).
-	 * @return string|null A users name.
-	 */
-	public function getName();
+    /**
+     * Returns a users profile image.
+     * @return string|null A users profile image.
+     */
+    public function getImage();
 
-	/**
-	 * Returns a users email address
-	 * @retun string
-	 * @since 0.8.0
-	 */
-	public function getEmail();
+    /**
+     * Returns a users name (first and last name or username).
+     * @return string|null A users name.
+     */
+    public function getName();
 
-	/**
-	 * Returns a list of users that can be used in assignments
-	 * @return static[]
-	 */
-	public static function findIdentities();
+    /**
+     * Returns a users email address
+     * @retun string
+     * @since 0.8.0
+     */
+    public function getEmail();
 }

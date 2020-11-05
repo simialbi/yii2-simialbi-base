@@ -15,6 +15,7 @@ use simialbi\yii2\i18n\TranslationTrait;
  * @author Simon Karlen <simi.albi@outlook.com>
  * @since 0.1
  */
-class Module extends \yii\base\Module {
-	use TranslationTrait;
+class Module extends \yii\base\Module
+{
+    use TranslationTrait;
 }

@@ -13,16 +13,17 @@ use simialbi\yii2\web\AssetBundle;
  * Class CommentInputAsset
  * @package simialbi\yii2\widgets
  */
-class CommentInputAsset extends AssetBundle {
-	/**
-	 * {@inheritdoc}
-	 */
-	public $sourcePath = '@bower/autosize/dist';
+class CommentInputAsset extends AssetBundle
+{
+    /**
+     * {@inheritdoc}
+     */
+    public $sourcePath = '@bower/autosize/dist';
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public $js = [
-		'autosize.js'
-	];
+    /**
+     * {@inheritdoc}
+     */
+    public $js = [
+        'autosize.js'
+    ];
 }

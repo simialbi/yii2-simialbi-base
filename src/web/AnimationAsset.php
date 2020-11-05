@@ -11,15 +11,16 @@ namespace simialbi\yii2\web;
  * @package simialbi\yii2\web
  * @see https://github.com/daneden/animate.css
  */
-class AnimationAsset extends AssetBundle {
-	/**
-	 * {@inheritdoc}
-	 */
-	public $sourcePath = '@bower/animate.css';
-	/**
-	 * {@inheritdoc}
-	 */
-	public $css = [
-		'animate.min.css'
-	];
+class AnimationAsset extends AssetBundle
+{
+    /**
+     * {@inheritdoc}
+     */
+    public $sourcePath = '@bower/animate.css';
+    /**
+     * {@inheritdoc}
+     */
+    public $css = [
+        'animate.min.css'
+    ];
 }

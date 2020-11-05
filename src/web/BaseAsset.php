@@ -13,24 +13,25 @@ namespace simialbi\yii2\web;
  * @author Simon Karlen <simi.albi@outlook.com>
  * @since 0.9
  */
-class BaseAsset extends AssetBundle {
-	/**
-	 * {@inheritDoc}
-	 */
-	public $sourcePath = '@simialbi/yii2/assets';
+class BaseAsset extends AssetBundle
+{
+    /**
+     * {@inheritDoc}
+     */
+    public $sourcePath = '@simialbi/yii2/assets';
 
-	/**
-	 * {@inheritDoc}
-	 */
- 	public $js = [
- 		'js/sa.js'
-	];
+    /**
+     * {@inheritDoc}
+     */
+    public $js = [
+        'js/sa.js'
+    ];
 
-	/**
-	 * {@inheritDoc}
-	 */
- 	public $depends = [
- 		'yii\web\JqueryAsset',
-		'yii\web\YiiAsset'
-	];
+    /**
+     * {@inheritDoc}
+     */
+    public $depends = [
+        'yii\web\JqueryAsset',
+        'yii\web\YiiAsset'
+    ];
 }
