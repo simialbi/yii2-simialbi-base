@@ -1,65 +1,66 @@
 {
-	"name": "simialbi/yii2-simialbi-base",
-	"description": "yii2 simialbi base",
-	"keywords": [
-		"yii2",
-		"extension",
-		"widget",
-		"simialbi",
-		"base",
-		"foundation"
-	],
-	"type": "yii2-extension",
-	"license": "MIT",
-	"support": {
-		"issues": "https://github.com/simialbi/yii2-simialbi-base/issues",
-		"source": "https://github.com/simialbi/yii2-simialbi-base"
-	},
-	"authors": [
-		{
-			"name": "Simon Karlen",
-			"email": "simi.albi@outlook.com"
-		}
-	],
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"require": {
-		"ext-intl": "*",
-		"yiisoft/yii2": "~2.0",
-		"bower-asset/moment": "^2.23.0",
-		"bower-asset/moment-timezone": "^0.5.23",
-		"bower-asset/animate.css": "~3.5"
-	},
-	"require-dev": {
-		"bower-asset/fullcalendar": "4.2.0",
-		"bower-asset/autosize": "^4.0.2",
-		"simialbi/yii2-summernote": "^1.1.0"
-	},
-	"suggest": {
-		"bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version 4.2.0)",
-		"bower-asset/autosize": "Is needed if you want to use CommentInput (^4.0.2)",
-		"simialbi/yii2-summernote": "Is needed if you want to use rich text fields in e.g. CommentInput"
-	},
-	"config": {
-		"process-timeout": 1800,
-		"fxp-asset": {
-			"enabled": false
-		}
-	},
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://asset-packagist.org"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"simialbi\\yii2\\": "src"
-		}
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
-		}
-	}
+    "name": "simialbi/yii2-simialbi-base",
+    "description": "yii2 simialbi base",
+    "keywords": [
+        "yii2",
+        "extension",
+        "widget",
+        "simialbi",
+        "base",
+        "foundation"
+    ],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/simialbi/yii2-simialbi-base/issues",
+        "source": "https://github.com/simialbi/yii2-simialbi-base"
+    },
+    "authors": [
+        {
+            "name": "Simon Karlen",
+            "email": "simi.albi@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">= 7.0",
+        "ext-intl": "*",
+        "yiisoft/yii2": "~2.0",
+        "bower-asset/moment": "^2.23.0",
+        "bower-asset/moment-timezone": "^0.5.23",
+        "bower-asset/animate.css": "~3.5"
+    },
+    "require-dev": {
+        "bower-asset/fullcalendar": "4.2.0",
+        "bower-asset/autosize": "^4.0.2",
+        "simialbi/yii2-summernote": "^1.1.0"
+    },
+    "suggest": {
+        "bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version 4.2.0)",
+        "bower-asset/autosize": "Is needed if you want to use CommentInput (^4.0.2)",
+        "simialbi/yii2-summernote": "Is needed if you want to use rich text fields in e.g. CommentInput"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "simialbi\\yii2\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
