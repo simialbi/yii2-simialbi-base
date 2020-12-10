@@ -44,6 +44,11 @@ use yii\web\IdentityInterface;
  *         return $this->email;
  *     }
  *
+ *     public function getMobile()
+ *     {
+ *         return $this->mobile;
+ *     }
+ *
  *     public function getId()
  *     {
  *         return $this->id;
@@ -94,4 +99,11 @@ interface UserInterface extends IdentityInterface
      * @since 0.8.0
      */
     public function getEmail();
+
+    /**
+     * Returns a users mobile phone number (international format e.g. +41791234567)
+     * @return string|null
+     * @since 0.10.1
+     */
+    public function getMobile();
 }
