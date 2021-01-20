@@ -145,14 +145,17 @@ CSS;
     /**
      * {@inheritDoc}
      */
-    protected function registerPlugin($pluginName = 'autosize')
+    protected function registerPlugin($pluginName = 'autosize', $selector = null)
     {
         $view = $this->view;
         $id = $this->options['id'];
         CommentInputAsset::register($view);
-        if ($this->richTextField) {
-            $id .= ' + .note-editor > .note-editing-area > .note-editable';
+        if (empty($selector)) {
+            $selector = "#$id";
         }
-        $view->registerJs("$pluginName(jQuery('#$id'));");
+        if ($this->richTextField) {
+            $selector .= ' + .note-editor > .note-editing-area > .note-editable';
+        }
+        $view->registerJs("$pluginName(jQuery('$selector'));");
     }
 }
