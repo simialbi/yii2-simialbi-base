@@ -59,7 +59,7 @@ trait WidgetTrait
             $view->registerJs($js);
         }
 
-        $this->registerClientEvents();
+        $this->registerClientEvents($selector);
     }
 
     /**
