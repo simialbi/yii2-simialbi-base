@@ -69,8 +69,9 @@ use yii\web\IdentityInterface;
  * @property-read string|null $name
  * @property-read string|null $image
  * @property-read string $email
+ * @property-read string|null $mobile
  *
- * @author Simoin Karlen <simi.albi@outlook.com>
+ * @author Simon Karlen <simi.albi@outlook.com>
  * @since 0.6.0
  */
 interface UserInterface extends IdentityInterface
