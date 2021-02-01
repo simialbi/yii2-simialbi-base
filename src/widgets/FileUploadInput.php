@@ -31,7 +31,7 @@ class FileUploadInput extends InputWidget
      *  - `content`: _string_, The button content
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $options;
+    public $options = [];
 
     /**
      * @var array|string the url to be used to upload files
@@ -109,7 +109,7 @@ class FileUploadInput extends InputWidget
             }
             $this->itemTemplate .= Html::beginTag('div', $progressOptions);
             if ($this->showProgressBar) {
-                $this->itemTemplate .= Html::tag('div', [
+                $this->itemTemplate .= Html::tag('div', '', [
                     'class' => ['progress-bar'],
                     'role' => 'progressbar',
                     'aria-valuenow' => '0',
@@ -123,6 +123,7 @@ class FileUploadInput extends InputWidget
             ]);
             $this->itemTemplate .= Html::endTag('div');
         }
+        Html::removeCssClass($this->options, 'form-control');
     }
 
     /**
@@ -132,14 +133,17 @@ class FileUploadInput extends InputWidget
     {
         $options = $this->options;
         $content = ArrayHelper::remove($options, 'content', '');
+        $html = '';
         if ($this->_renderPlaceholder) {
-            Html::tag('div', '', [
+            $html .= Html::tag('div', '', [
                 'id' => $this->options['id'] . '-file-placeholder'
             ]);
         }
-        Html::button($content, $options);
+        $html .= Html::button($content, $options);
 
         $this->registerPlugin('Resumable');
+
+        return $html;
     }
 
     /**

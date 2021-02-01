@@ -50,10 +50,10 @@ interface MessageInterface
 
     /**
      * Sets the message sender.
-     * @param string $from sender phone number.
+     * @param string|null $from sender phone number.
      * @return $this self reference.
      */
-    public function setFrom(string $from);
+    public function setFrom(string $from = null);
 
     /**
      * Returns the message recipient(s).

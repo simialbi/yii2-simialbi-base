@@ -46,7 +46,7 @@ abstract class BaseProvider extends Component implements ProviderInterface, View
      * - a [path alias](guide:concept-aliases): an absolute view file path specified as a path alias, e.g., '@app/sms/layout'.
      * - a boolean false: the layout is disabled.
      */
-    public $layout = 'layouts/sms';
+    public $layout = false;
     /**
      * @var array the configuration that should be applied to any newly created
      * sms message instance by [[createMessage()]] or [[compose()]]. Any valid property defined
