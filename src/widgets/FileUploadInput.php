@@ -21,9 +21,14 @@ use yii\web\JsExpression;
 class FileUploadInput extends InputWidget
 {
     /**
-     * @var boolean
+     * @var boolean|string The input id of the textarea to combine FileUpload with
      */
     public $combineWithTextarea = false;
+
+    /**
+     * @var string|null Tooltip to show on button
+     */
+    public $tooltip;
 
     /**
      * @var array the HTML attributes for the widget container tag. The following special tokens are recognized
@@ -139,6 +144,10 @@ class FileUploadInput extends InputWidget
                 'id' => $this->options['id'] . '-file-placeholder'
             ]);
         }
+        if ($this->tooltip) {
+            $options['data']['toggle'] = 'tooltip';
+            $options['title'] = Html::encode($this->tooltip);
+        }
         $html .= Html::button($content, $options);
 
         $this->registerPlugin('Resumable');
@@ -157,13 +166,35 @@ class FileUploadInput extends InputWidget
 
         FileUploadInputAsset::register($this->view);
 
-        $js = <<<JS
+        $js = '';
+
+        if (false !== $this->combineWithTextarea) {
+            $js .= <<<JS
+var textarea$var = jQuery('{$this->combineWithTextarea}');
+var formGroup$var = textarea$var.closest('.form-group');
+var button$var = jQuery('#$id');
+
+formGroup$var.css({position: 'relative'});
+button$var.appendTo(formGroup$var).css({
+    position: 'absolute',
+    left: '1.5rem',
+    top: textarea$var.height() - button$var.height()
+});
+
+JS;
+        }
+
+        if ($this->tooltip) {
+            $js .= "jQuery('#$id').tooltip();\n";
+        }
+
+        $js .= <<<JS
 var resumable$var = new $pluginName($options);
 resumable$var.assignBrowse(document.getElementById('$id'));
 JS;
         $fileAdded = "function fileAdded(file) {\n";
         if ($this->autoUpload) {
-            $fileAdded .= "resubmable$var.upload();\n";
+            $fileAdded .= "resumable$var.upload();\n";
         }
         $fileAdded .= <<<JS
 var container = jQuery('{$this->filePlaceholder}');
@@ -193,16 +224,15 @@ function fileSuccess(file, msg) {
     var el = jQuery('#file-' + file.uniqueIdentifier),
         uFile = JSON.parse(msg),
         deleteUrl = '{$this->deleteUrl}';
-    el.find('.file-name').replaceWith('<a class="file-name flex-grow-0 href="' + uFile.path + ' target="blank">' + file.fileName + '</a>');
-    el.prepend('<input type="hidden" name="{$inputName}[]" value="' + file.uniqueIdentifier + '"');
+    el.find('.file-name').replaceWith('<a class="file-name flex-grow-0" href="' + uFile.path + '" target="_blank" data-pjax="0">' + file.fileName + '</a>');
+    el.prepend('<input type="hidden" name="{$inputName}[]" value="' + file.uniqueIdentifier + '">');
     if (deleteUrl) {
         el.find('.delete-link').removeClass('d-none').show().on('click', function () {
-            var el = jQuery(this);
             jQuery.ajax({
                 url: deleteUrl + '?identifier=' + file.uniqueIdentifier,
                 method: 'DELETE'
             }).done(function () {
-                el.remove();
+                jQuery('#file-' + file.uniqueIdentifier).remove();
             });
         });
     }
@@ -242,6 +272,7 @@ JS;
         if (Yii::$app->request->enableCsrfValidation) {
             $params[Yii::$app->request->csrfParam] = Yii::$app->request->getCsrfToken();
         }
+
         return ArrayHelper::merge([
             'target' => Url::to($this->uploadUrl),
             'testTarget' => Url::to($this->fileExistsUrl),
