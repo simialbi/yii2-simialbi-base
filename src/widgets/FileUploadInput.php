@@ -21,7 +21,7 @@ use yii\web\JsExpression;
 class FileUploadInput extends InputWidget
 {
     /**
-     * @var boolean|string The input id of the textarea to combine FileUpload with
+     * @var boolean|string The jQuery selector of the textarea to combine FileUpload with
      */
     public $combineWithTextarea = false;
 
@@ -65,6 +65,15 @@ class FileUploadInput extends InputWidget
     public $itemTemplate;
 
     /**
+     * @var string|null The template for the files items already uploaded (typical used in update function).
+     * Will be set if not set. The following special tokens are recognized and will be replaced:
+     *  - `{identifier}`: _string_, Unique file identifier
+     *  - `{name}`: _string_, The file name
+     *  - `{link}`: _string_, The file url
+     */
+    public $initialItemTemplate;
+
+    /**
      * @var array Extra parameters to include in the multipart request with data.
      */
     public $params = [];
@@ -82,6 +91,11 @@ class FileUploadInput extends InputWidget
      * @var string The jQuery selector of the placeholder element
      */
     public $filePlaceholder;
+
+    /**
+     * @var array An array of initial files to render. The unique ids of the files are the key and the urls the values.
+     */
+    public $files = [];
 
     /**
      * @var boolean Render the placeholder or not
@@ -128,6 +142,29 @@ class FileUploadInput extends InputWidget
             ]);
             $this->itemTemplate .= Html::endTag('div');
         }
+        if (empty($this->initialItemTemplate)) {
+            $this->initialItemTemplate = Html::beginTag('div', [
+                'class' => ['d-flex', 'align-items-center', 'justify-content-between', 'mb-2', 'bg-light', 'px-3', 'py-2'],
+                'id' => 'file-{identifier}'
+            ]);
+            $this->initialItemTemplate .= $this->hasModel()
+                ? Html::activeHiddenInput($this->model, $this->attribute . '[]', [
+                    'value' => '{identifier}',
+                    'id' => $this->options['id'] . '-{identifier}'
+                ])
+                : Html::hiddenInput($this->name . '[]', '{identifier}');
+            $this->initialItemTemplate .= Html::tag('a', '{name}', [
+                'class' => ['file-name', 'flex-grow-0'],
+                'href' => '{link}',
+                'target' => '_blank',
+                'data' => ['pjax' => '0']
+            ]);
+            $this->initialItemTemplate .= Html::a('&times;', 'javascript:;', [
+                'class' => ['delete-link', 'flex-grow-0', 'text-dark'],
+                'data' => ['unique-id' => '{identifier}']
+            ]);
+            $this->initialItemTemplate .= Html::endTag('div');
+        }
         Html::removeCssClass($this->options, 'form-control');
     }
 
@@ -140,7 +177,18 @@ class FileUploadInput extends InputWidget
         $content = ArrayHelper::remove($options, 'content', '');
         $html = '';
         if ($this->_renderPlaceholder) {
-            $html .= Html::tag('div', '', [
+            $placeholderContent = '';
+            if (!empty($this->files)) {
+                foreach ($this->files as $identifier => $file) {
+                    $placeholderContent .= strtr($this->initialItemTemplate, [
+                        '{identifier}' => $identifier,
+                        '{link}' => $file,
+                        '{name}' => basename($file)
+                    ]);
+                }
+            }
+
+            $html .= Html::tag('div', $placeholderContent, [
                 'id' => $this->options['id'] . '-file-placeholder'
             ]);
         }
@@ -191,6 +239,7 @@ JS;
         $js .= <<<JS
 var resumable$var = new $pluginName($options);
 resumable$var.assignBrowse(document.getElementById('$id'));
+
 JS;
         $fileAdded = "function fileAdded(file) {\n";
         if ($this->autoUpload) {
@@ -238,6 +287,23 @@ function fileSuccess(file, msg) {
     }
 }
 JS;
+        if (!empty($this->files) && $this->deleteUrl) {
+            $ids = implode(',#file-', array_keys($this->files));
+            $js .= <<<JS
+jQuery('#file-$ids').find('.delete-link').on('click', function () {
+    debugger;
+    var el = jQuery(this);
+    jQuery.ajax({
+        url: '{$this->deleteUrl}?identifier=' + el.data('uniqueId'),
+        method: 'DELETE'
+    }).done(function () {
+        jQuery('#file-' + el.data('uniqueId')).remove();
+    });
+});
+JS;
+
+        }
+
         $this->clientEvents['fileSuccess'] = new JsExpression($fileSuccess);
 
         $this->view->registerJs($js);
