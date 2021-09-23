@@ -24,7 +24,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">= 7.0",
+        "php": ">=7.4",
         "ext-intl": "*",
         "yiisoft/yii2": "~2.0",
         "bower-asset/moment": "^2.23.0",
@@ -35,12 +35,14 @@
         "bower-asset/fullcalendar": "4.2.0",
         "bower-asset/autosize": "^4.0.2",
         "bower-asset/resumablejs": "^1.1.0",
+        "kartik-v/yii2-widget-select2": "^v2.2.2",
         "simialbi/yii2-summernote": "^1.1.0"
     },
     "suggest": {
         "bower-asset/fullcalendar": "Is needed if you want to use FullCalendarAsset (version 4.2.0)",
         "bower-asset/autosize": "Is needed if you want to use CommentInput (^4.0.2)",
         "bower-asset/resumablejs": "Is needed if you want to use FileUploadInput (^1.1.0)",
+        "kartik-v/yii2-widget-select2": "Is needed if you want to use ConditionBuilder (^v2.2.2)",
         "simialbi/yii2-summernote": "Is needed if you want to use rich text fields in e.g. CommentInput"
     },
     "config": {
