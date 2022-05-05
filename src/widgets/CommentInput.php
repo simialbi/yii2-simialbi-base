@@ -45,7 +45,7 @@ class CommentInput extends InputWidget
      */
     public $summernoteClientOptions = [];
     /**
-     * @var array the HTML attributes for the image wrapper tag.
+     * @var array|boolean the HTML attributes for the image wrapper tag. Set to false to disable wrapping
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $imageWrapperOptions = [
@@ -59,7 +59,7 @@ class CommentInput extends InputWidget
         'class' => ['btn', 'btn-primary']
     ];
     /**
-     * @var array the HTML attributes for the button wrapper tag.
+     * @var array|boolean the HTML attributes for the button wrapper tag. Set to false to disable wrapping
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $buttonWrapperOptions = [
@@ -91,9 +91,9 @@ class CommentInput extends InputWidget
         $image = '';
 
         if ($this->image) {
-            $image = Html::beginTag('div', $this->imageWrapperOptions);
+            $image .= $this->imageWrapperOptions ? Html::beginTag('div', $this->imageWrapperOptions) : '';
             $image .= Html::img($this->image, $this->imageOptions);
-            $image .= Html::endTag('div');
+            $image .= $this->imageWrapperOptions ? Html::endTag('div') : '';
         }
         if ($this->richTextField) {
             $css = <<<CSS
@@ -129,9 +129,10 @@ CSS;
             }
             $this->registerPlugin();
         }
-        $button = Html::beginTag('div', $this->buttonWrapperOptions);
+
+        $button = $this->buttonWrapperOptions ? Html::beginTag('div', $this->buttonWrapperOptions) : '';
         $button .= Html::submitButton($icon, $buttonOptions);
-        $button .= Html::endTag('div');
+        $button .= $this->buttonWrapperOptions ? Html::endTag('div') : '';
 
         return strtr($template, [
             '{beginWrapper}' => Html::beginTag('div', ['class' => 'input-group']),
