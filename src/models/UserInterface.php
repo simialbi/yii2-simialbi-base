@@ -82,10 +82,10 @@ interface UserInterface extends IdentityInterface
      *
      * @param array|null $filters Additional filters to apply to the query.
      *
-     * @return static
+     * @return static[]
      * @see ActiveQuery::where()
      */
-    public static function findIdentities(?array $filters): UserInterface;
+    public static function findIdentities(?array $filters): array;
 
     /**
      * Returns a users profile image.
