@@ -80,12 +80,19 @@ interface UserInterface extends IdentityInterface
     /**
      * Returns a list of users that can be used in assignments
      *
-     * @param array|null $filters Additional filters to apply to the query.
-     *
      * @return static[]
      * @see ActiveQuery::where()
      */
-    public static function findIdentities(?array $filters): array;
+    public static function findIdentities(): array;
+
+    /**
+     * Return a list of users thant can be used in assignments filtered by ids.
+     *
+     * @param array $ids The ids of the users to find
+     *
+     * @return static[]
+     */
+    public static function findIdentitiesByIds(array $ids): array;
 
     /**
      * Returns a users profile image.
