@@ -59,26 +59,38 @@ class ConditionBuilderTranslator extends BaseObject
     public function init()
     {
         $this->_operators = [
-            'equal' =>            '= ?',
-            'not_equal' =>        '<> ?',
-            'in' =>               ['op' => 'IN (?)',        'list' => true, 'sep' => ', ' ],
-            'not_in' =>           ['op' => 'NOT IN (?)',    'list' => true, 'sep' => ', '],
-            'less' =>             '< ?',
-            'less_or_equal' =>    '<= ?',
-            'greater' =>          '> ?',
+            'equal' => '= ?',
+            'not_equal' => '<> ?',
+            'in' => ['op' => 'IN (?)', 'list' => true, 'sep' => ', '],
+            'not_in' => ['op' => 'NOT IN (?)', 'list' => true, 'sep' => ', '],
+            'less' => '< ?',
+            'less_or_equal' => '<= ?',
+            'greater' => '> ?',
             'greater_or_equal' => '>= ?',
-            'between' =>          ['op' => 'BETWEEN ?',     'list' => true, 'sep' => ' AND '],
-            'not_between' =>      ['op' => 'NOT BETWEEN ?', 'list' => true, 'sep' => ' AND '],
-            'begins_with' =>      ['op' => 'LIKE ?',        'fn' => function($value){ return "$value%"; } ],
-            'not_begins_with' =>  ['op' => 'NOT LIKE ?',    'fn' => function($value){ return "$value%"; } ],
-            'contains' =>         ['op' => 'LIKE ?',        'fn' => function($value){ return "%$value%"; } ],
-            'not_contains' =>     ['op' => 'NOT LIKE ?',    'fn' => function($value){ return "%$value%"; } ],
-            'ends_with' =>        ['op' => 'LIKE ?',        'fn' => function($value){ return "%$value"; } ],
-            'not_ends_with' =>    ['op' => 'NOT LIKE ?',    'fn' => function($value){ return "%$value"; } ],
-            'is_empty' =>         '= ""',
-            'is_not_empty' =>     '<> ""',
-            'is_null' =>          'IS NULL',
-            'is_not_null' =>      'IS NOT NULL'
+            'between' => ['op' => 'BETWEEN ?', 'list' => true, 'sep' => ' AND '],
+            'not_between' => ['op' => 'NOT BETWEEN ?', 'list' => true, 'sep' => ' AND '],
+            'begins_with' => ['op' => 'LIKE ?', 'fn' => function ($value) {
+                return "$value%";
+            }],
+            'not_begins_with' => ['op' => 'NOT LIKE ?', 'fn' => function ($value) {
+                return "$value%";
+            }],
+            'contains' => ['op' => 'LIKE ?', 'fn' => function ($value) {
+                return "%$value%";
+            }],
+            'not_contains' => ['op' => 'NOT LIKE ?', 'fn' => function ($value) {
+                return "%$value%";
+            }],
+            'ends_with' => ['op' => 'LIKE ?', 'fn' => function ($value) {
+                return "%$value";
+            }],
+            'not_ends_with' => ['op' => 'NOT LIKE ?', 'fn' => function ($value) {
+                return "%$value";
+            }],
+            'is_empty' => '= ""',
+            'is_not_empty' => '<> ""',
+            'is_null' => 'IS NULL',
+            'is_not_null' => 'IS NOT NULL'
         ];
 
         $this->_where = $this->buildWhere($this->data);
@@ -126,6 +138,7 @@ class ConditionBuilderTranslator extends BaseObject
                 $where[] = $this->encodeRule($field, $operator, $params);
             }
         }
+
         return "(" . implode($condition, $where) . ")";
     }
 
@@ -160,6 +173,7 @@ class ConditionBuilderTranslator extends BaseObject
         }
 
         $this->_params = array_merge($this->_params, $params);
+
         return $field . " " . ($replacement ? str_replace("?", $replacement, $pattern) : $pattern);
     }
 

@@ -25,12 +25,12 @@ abstract class BaseMessage implements MessageInterface
      * @var ProviderInterface the provider instance that created this message.
      * For independently created messages this is `null`.
      */
-    public $provider;
+    public ProviderInterface $provider;
 
     /**
      * {@inheritDoc}
      */
-    public function getRegion()
+    public function getRegion(): string
     {
         $language = explode('-', Yii::$app->language);
         return (count($language) > 1) ? $language[1] : strtoupper($language[0]);
@@ -40,7 +40,7 @@ abstract class BaseMessage implements MessageInterface
      * {@inheritDoc}
      * @throws \yii\base\InvalidConfigException
      */
-    public function send(ProviderInterface $provider = null)
+    public function send(ProviderInterface $provider = null): bool
     {
         if ($provider === null && $this->provider === null) {
             $provider = Yii::$app->get('smsProvider');
@@ -55,7 +55,7 @@ abstract class BaseMessage implements MessageInterface
      * PHP magic method that returns the string representation of this object.
      * @return string the string representation of this object.
      */
-    public function __toString()
+    public function __toString(): string
     {
         // __toString cannot throw exception
         // use trigger_error to bypass this limitation

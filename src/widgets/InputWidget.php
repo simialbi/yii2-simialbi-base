@@ -26,7 +26,7 @@ class InputWidget extends \yii\widgets\InputWidget
      * {@inheritdoc}
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->getId();

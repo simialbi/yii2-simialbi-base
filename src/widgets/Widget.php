@@ -23,7 +23,7 @@ class Widget extends \yii\base\Widget
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();

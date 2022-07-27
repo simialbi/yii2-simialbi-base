@@ -14,13 +14,13 @@ use yii\helpers\StringHelper;
 trait WidgetTrait
 {
     /**
-     * @var array the options for the underlying JS plugin.
+     * @var array|false the options for the underlying JS plugin.
      */
     public $clientOptions = [];
     /**
      * @var array the event handlers for the underlying JS plugin.
      */
-    public $clientEvents = [];
+    public array $clientEvents = [];
     /**
      * @var array the HTML attributes for the widget container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -33,7 +33,7 @@ trait WidgetTrait
      * @param string|null $pluginName optional plugin name
      * @param string|null $selector optional javascript selector for the plugin initialization. Defaults to widget id.
      */
-    protected function registerPlugin($pluginName = null, $selector = null)
+    protected function registerPlugin(?string $pluginName = null, ?string $selector = null)
     {
         $view = $this->view;
         $id = $this->options['id'];
@@ -67,7 +67,7 @@ trait WidgetTrait
      *
      * @param string|null $selector optional javascript selector for the plugin initialization. Defaults to widget id.
      */
-    protected function registerClientEvents($selector = null)
+    protected function registerClientEvents(?string $selector = null)
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];

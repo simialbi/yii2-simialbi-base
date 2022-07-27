@@ -8,7 +8,6 @@ use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\di\Instance;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 use yii\rest\Controller;
 
 class ConditionBuilderController extends Controller
@@ -70,7 +69,7 @@ class ConditionBuilderController extends Controller
             $query->orderBy($order);
         }
 
-        // add orwhere for each filtercolumn
+        // add orWhere for each filtercolumn
         foreach ($filterColumns as $filterColumn) {
             foreach ($words as $word) {
                 $query->orWhere([
@@ -92,7 +91,9 @@ class ConditionBuilderController extends Controller
         $results = array_map(function ($item) use ($pk, $display) {
             $str = $display;
 
-            $data = array_combine(array_map(function ($value) { return '{' . $value . '}';}, array_keys($item)), $item);
+            $data = array_combine(array_map(function ($value) {
+                return '{' . $value . '}';
+            }, array_keys($item)), $item);
             $str = strtr($str, $data);
 
             return [

@@ -20,15 +20,15 @@ class SMSEvent extends Event
     /**
      * @var MessageInterface the sms message being send.
      */
-    public $message;
+    public MessageInterface $message;
     /**
      * @var boolean if message was sent successfully.
      */
-    public $isSuccessful;
+    public bool $isSuccessful;
     /**
      * @var boolean whether to continue sending an sms. Event handlers of
      * [[\tonic\hq\re\sms\BaseProvider::EVENT_BEFORE_SEND]] may set this property to decide whether
      * to continue send or not.
      */
-    public $isValid = true;
+    public bool $isValid = true;
 }

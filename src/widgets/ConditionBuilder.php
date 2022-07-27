@@ -119,10 +119,10 @@ class ConditionBuilder extends InputWidget
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         if (!class_exists($this->modelClass, true)) {
             throw new InvalidConfigException('Attribute \'modelClass\' not provided');

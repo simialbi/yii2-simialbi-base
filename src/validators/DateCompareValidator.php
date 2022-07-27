@@ -32,7 +32,7 @@ class DateCompareValidator extends Validator
      * {@inheritdoc}
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 

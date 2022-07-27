@@ -22,9 +22,10 @@ trait TranslationTrait
 {
     /**
      * Init translations
-     * @throws ReflectionException
+     *
+     * @return void
      */
-    public function registerTranslations()
+    public function registerTranslations(): void
     {
         $reflector = new ReflectionClass(static::class);
         $dir = rtrim(dirname($reflector->getFileName()), '\\/');

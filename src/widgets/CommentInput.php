@@ -17,16 +17,16 @@ class CommentInput extends InputWidget
     /**
      * @var string optional template to render the input group content
      */
-    public $template = '{beginWrapper}{image}{input}{submit}{endWrapper}';
+    public string $template = '{beginWrapper}{image}{input}{submit}{endWrapper}';
     /**
      * @var string User image (optional)
      */
-    public $image;
+    public string $image;
     /**
      * @var array the HTML attributes for the image tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $imageOptions = [
+    public array $imageOptions = [
         'class' => ['rounded-circle'],
         'style' => [
             'height' => '50px',
@@ -39,11 +39,11 @@ class CommentInput extends InputWidget
      * @var boolean Use rich text field (summernote) instead of default textarea. The package
      * "simialbi/yii2-summernote" is needed to use this feature.
      */
-    public $richTextField = false;
+    public bool $richTextField = false;
     /**
      * @var array Summernote plugin options
      */
-    public $summernoteClientOptions = [];
+    public array $summernoteClientOptions = [];
     /**
      * @var array|boolean the HTML attributes for the image wrapper tag. Set to false to disable wrapping
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -55,7 +55,7 @@ class CommentInput extends InputWidget
      * @var array the HTML attributes for the button tag. You can override `icon` property to set button content.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $buttonOptions = [
+    public array $buttonOptions = [
         'class' => ['btn', 'btn-primary']
     ];
     /**
@@ -80,7 +80,7 @@ class CommentInput extends InputWidget
     /**
      * {@inheritdoc}
      */
-    public function run()
+    public function run(): string
     {
         $template = $this->template;
         $options = $this->options;
@@ -90,7 +90,7 @@ class CommentInput extends InputWidget
         $icon = ArrayHelper::remove($buttonOptions, 'icon', '🖅');
         $image = '';
 
-        if ($this->image) {
+        if (isset($this->image) && $this->image) {
             $image .= $this->imageWrapperOptions ? Html::beginTag('div', $this->imageWrapperOptions) : '';
             $image .= Html::img($this->image, $this->imageOptions);
             $image .= $this->imageWrapperOptions ? Html::endTag('div') : '';
@@ -146,7 +146,7 @@ CSS;
     /**
      * {@inheritDoc}
      */
-    protected function registerPlugin($pluginName = 'autosize', $selector = null)
+    protected function registerPlugin(?string $pluginName = 'autosize', ?string $selector = null)
     {
         $view = $this->view;
         $id = $this->options['id'];

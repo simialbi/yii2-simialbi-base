@@ -26,7 +26,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
      * @var array the moment fallback definition to use for the ICU short patterns `short`, `medium`, `long` and `full`.
      * This is used as fallback when the intl extension is not installed.
      */
-    public static $momentFallbackDatePatterns = [
+    public static array $momentFallbackDatePatterns = [
         'short' => [
             'date' => 'M/D/YY',
             'time' => 'HH:mm',
@@ -48,7 +48,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
             'datetime' => 'dddd, MMMM D, YYYY h:mm:ssA z',
         ]
     ];
-    protected static $_icuShortFormats = [
+    protected static array $_icuShortFormats = [
         'short' => 3, // IntlDateFormatter::SHORT,
         'medium' => 2, // IntlDateFormatter::MEDIUM,
         'long' => 1, // IntlDateFormatter::LONG,
@@ -65,11 +65,11 @@ class FormatConverter extends \yii\helpers\FormatConverter
      *
      * @param string $pattern date format pattern in ICU format.
      * @param string $type 'date', 'time', or 'datetime'.
-     * @param string $locale the locale to use for converting ICU short patterns `short`, `medium`, `long` and `full`.
+     * @param string|null $locale the locale to use for converting ICU short patterns `short`, `medium`, `long` and `full`.
      * If not given, `Yii::$app->language` will be used.
      * @return string The converted date format pattern.
      */
-    public static function convertDateIcuToMoment($pattern, $type = 'date', $locale = null)
+    public static function convertDateIcuToMoment(string $pattern, string $type = 'date', string $locale = null): string
     {
         if (isset(self::$_icuShortFormats[$pattern])) {
             if (extension_loaded('intl')) {
@@ -96,6 +96,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
                 $escaped[$match] = $match;
             }
         }
+
         return strtr($pattern, array_merge($escaped, [
             'G' => '',        // era designator like (Anno Domini)
             'Y' => 'GGGG',    // 4digit year of "Week of Year"

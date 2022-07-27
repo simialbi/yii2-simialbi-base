@@ -28,7 +28,7 @@ class FileUploadInput extends InputWidget
     /**
      * @var string|null Tooltip to show on button
      */
-    public $tooltip;
+    public ?string $tooltip = null;
 
     /**
      * @var array the HTML attributes for the widget container tag. The following special tokens are recognized
@@ -62,7 +62,7 @@ class FileUploadInput extends InputWidget
      *  - `{identifier}`: _string_, Unique file identifier
      *  - `{name}`: _string_, The file name
      */
-    public $itemTemplate;
+    public ?string $itemTemplate;
 
     /**
      * @var string|null The template for the files items already uploaded (typical used in update function).
@@ -71,41 +71,41 @@ class FileUploadInput extends InputWidget
      *  - `{name}`: _string_, The file name
      *  - `{link}`: _string_, The file url
      */
-    public $initialItemTemplate;
+    public ?string $initialItemTemplate;
 
     /**
      * @var array Extra parameters to include in the multipart request with data.
      */
-    public $params = [];
+    public array $params = [];
 
     /**
      * @var boolean Whether to start upload automatically after file add or not.
      */
-    public $autoUpload = true;
+    public bool $autoUpload = true;
     /**
      * @var boolean
      */
-    public $showProgressBar = true;
+    public bool $showProgressBar = true;
 
     /**
      * @var string The jQuery selector of the placeholder element
      */
-    public $filePlaceholder;
+    public string $filePlaceholder;
 
     /**
      * @var array An array of initial files to render. The unique ids of the files are the key and the urls the values.
      */
-    public $files = [];
+    public array $files = [];
 
     /**
      * @var boolean Render the placeholder or not
      */
-    private $_renderPlaceholder = false;
+    private bool $_renderPlaceholder = false;
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
 
         parent::init();
@@ -171,7 +171,7 @@ class FileUploadInput extends InputWidget
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(): string
     {
         $options = $this->options;
         $content = ArrayHelper::remove($options, 'content', '');
@@ -206,7 +206,7 @@ class FileUploadInput extends InputWidget
     /**
      * {@inheritDoc}
      */
-    protected function registerPlugin($pluginName = null, $selector = null)
+    protected function registerPlugin(?string $pluginName = null, ?string $selector = null)
     {
         $id = $this->options['id'];
         $var = Inflector::variablize($id);
@@ -314,7 +314,7 @@ JS;
     /**
      * {@inheritDoc}
      */
-    protected function registerClientEvents($selector = null)
+    protected function registerClientEvents(?string $selector = null)
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];
@@ -331,7 +331,7 @@ JS;
     /**
      * @return array
      */
-    protected function getClientOptions()
+    protected function getClientOptions(): array
     {
         $clientOptions = $this->clientOptions;
         $params = $this->params;
