@@ -91,6 +91,7 @@ interface UserInterface extends IdentityInterface
      * @param array $ids The ids of the users to find
      *
      * @return static[]
+     * @since 0.13.0
      */
     public static function findIdentitiesByIds(array $ids): array;
 
