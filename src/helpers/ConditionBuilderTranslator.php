@@ -39,18 +39,18 @@ use yii\helpers\ArrayHelper;
  */
 class ConditionBuilderTranslator extends BaseObject
 {
-    private string $_where;
-    private array $_params = [];
-    private array $_operators;
+    private $_where;
+    private $_params = [];
+    private $_operators;
 
     /**
      * @var array Rules configuration
      */
-    public array $data;
+    public $data;
     /**
      * @var bool if date and datetime should be converted to a timestamp
      */
-    public bool $convertDateToTimestamp = true;
+    public $convertDateToTimestamp = true;
 
     /**
      * @inheritdoc

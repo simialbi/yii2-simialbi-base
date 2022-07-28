@@ -20,7 +20,7 @@ trait WidgetTrait
     /**
      * @var array the event handlers for the underlying JS plugin.
      */
-    public array $clientEvents = [];
+    public $clientEvents = [];
     /**
      * @var array the HTML attributes for the widget container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.

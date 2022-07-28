@@ -26,7 +26,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
      * @var array the moment fallback definition to use for the ICU short patterns `short`, `medium`, `long` and `full`.
      * This is used as fallback when the intl extension is not installed.
      */
-    public static array $momentFallbackDatePatterns = [
+    public static $momentFallbackDatePatterns = [
         'short' => [
             'date' => 'M/D/YY',
             'time' => 'HH:mm',
@@ -48,7 +48,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
             'datetime' => 'dddd, MMMM D, YYYY h:mm:ssA z',
         ]
     ];
-    protected static array $_icuShortFormats = [
+    protected static $_icuShortFormats = [
         'short' => 3, // IntlDateFormatter::SHORT,
         'medium' => 2, // IntlDateFormatter::MEDIUM,
         'long' => 1, // IntlDateFormatter::LONG,

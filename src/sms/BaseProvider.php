@@ -61,21 +61,21 @@ abstract class BaseProvider extends Component implements ProviderInterface, View
      * ]
      * ```
      */
-    public array $messageConfig = [];
+    public $messageConfig = [];
     /**
      * @var string the default class name of the new message instances created by [[createMessage()]]
      */
-    public string $messageClass = 'tonic\hq\re\sms\BaseMessage';
+    public $messageClass = 'tonic\hq\re\sms\BaseMessage';
     /**
      * @var bool whether to save sms messages as files under [[fileTransportPath]] instead of sending them
      * to the actual recipients. This is usually used during development for debugging purpose.
      * @see fileTransportPath
      */
-    public bool $useFileTransport = false;
+    public $useFileTransport = false;
     /**
      * @var string the directory where the sms messages are saved when [[useFileTransport]] is true.
      */
-    public string $fileTransportPath = '@runtime/sms';
+    public $fileTransportPath = '@runtime/sms';
     /**
      * @var callable a PHP callback that will be called by [[send()]] when [[useFileTransport]] is true.
      * The callback should return a file name which will be used to save the sms message.
@@ -96,8 +96,8 @@ abstract class BaseProvider extends Component implements ProviderInterface, View
     /**
      * @var string|null the directory containing view files for composing mail messages.
      */
-    private ?string $_viewPath = null;
-    private ?string $_message = null;
+    private $_viewPath = null;
+    private $_message = null;
 
     /**
      * {@inheritDoc}

@@ -20,13 +20,13 @@ use yii\validators\Validator;
 class DateCompareValidator extends Validator
 {
     /** @var string The second attribute to compare against */
-    public string $compareAttribute = '';
+    public $compareAttribute = '';
 
     /** @var string How to compare the 2 attributes, allowed operators are: ===, !==, <, <=, >, >= */
-    public string $operator = '';
+    public $operator = '';
 
     /** @var string Needed for client-side validation. ICU or php formats allowed. Prefix php formats with php: */
-    public string $format = '';
+    public $format = '';
 
     /**
      * {@inheritdoc}

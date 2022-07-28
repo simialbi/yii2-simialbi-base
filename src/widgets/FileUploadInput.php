@@ -28,7 +28,7 @@ class FileUploadInput extends InputWidget
     /**
      * @var string|null Tooltip to show on button
      */
-    public ?string $tooltip = null;
+    public $tooltip = null;
 
     /**
      * @var array the HTML attributes for the widget container tag. The following special tokens are recognized
@@ -62,7 +62,7 @@ class FileUploadInput extends InputWidget
      *  - `{identifier}`: _string_, Unique file identifier
      *  - `{name}`: _string_, The file name
      */
-    public ?string $itemTemplate;
+    public $itemTemplate;
 
     /**
      * @var string|null The template for the files items already uploaded (typical used in update function).
@@ -71,36 +71,36 @@ class FileUploadInput extends InputWidget
      *  - `{name}`: _string_, The file name
      *  - `{link}`: _string_, The file url
      */
-    public ?string $initialItemTemplate;
+    public $initialItemTemplate;
 
     /**
      * @var array Extra parameters to include in the multipart request with data.
      */
-    public array $params = [];
+    public $params = [];
 
     /**
      * @var boolean Whether to start upload automatically after file add or not.
      */
-    public bool $autoUpload = true;
+    public $autoUpload = true;
     /**
      * @var boolean
      */
-    public bool $showProgressBar = true;
+    public $showProgressBar = true;
 
     /**
      * @var string The jQuery selector of the placeholder element
      */
-    public string $filePlaceholder;
+    public $filePlaceholder;
 
     /**
      * @var array An array of initial files to render. The unique ids of the files are the key and the urls the values.
      */
-    public array $files = [];
+    public $files = [];
 
     /**
      * @var boolean Render the placeholder or not
      */
-    private bool $_renderPlaceholder = false;
+    private $_renderPlaceholder = false;
 
     /**
      * {@inheritDoc}

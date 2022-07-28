@@ -17,16 +17,16 @@ class CommentInput extends InputWidget
     /**
      * @var string optional template to render the input group content
      */
-    public string $template = '{beginWrapper}{image}{input}{submit}{endWrapper}';
+    public $template = '{beginWrapper}{image}{input}{submit}{endWrapper}';
     /**
      * @var string User image (optional)
      */
-    public string $image;
+    public $image;
     /**
      * @var array the HTML attributes for the image tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $imageOptions = [
+    public $imageOptions = [
         'class' => ['rounded-circle'],
         'style' => [
             'height' => '50px',
@@ -39,11 +39,11 @@ class CommentInput extends InputWidget
      * @var boolean Use rich text field (summernote) instead of default textarea. The package
      * "simialbi/yii2-summernote" is needed to use this feature.
      */
-    public bool $richTextField = false;
+    public $richTextField = false;
     /**
      * @var array Summernote plugin options
      */
-    public array $summernoteClientOptions = [];
+    public $summernoteClientOptions = [];
     /**
      * @var array|boolean the HTML attributes for the image wrapper tag. Set to false to disable wrapping
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -55,7 +55,7 @@ class CommentInput extends InputWidget
      * @var array the HTML attributes for the button tag. You can override `icon` property to set button content.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $buttonOptions = [
+    public $buttonOptions = [
         'class' => ['btn', 'btn-primary']
     ];
     /**
@@ -69,7 +69,7 @@ class CommentInput extends InputWidget
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if ($this->richTextField && !class_exists('marqu3s\summernote\Summernote')) {

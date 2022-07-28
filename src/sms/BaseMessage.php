@@ -25,7 +25,7 @@ abstract class BaseMessage implements MessageInterface
      * @var ProviderInterface the provider instance that created this message.
      * For independently created messages this is `null`.
      */
-    public ProviderInterface $provider;
+    public $provider;
 
     /**
      * {@inheritDoc}
