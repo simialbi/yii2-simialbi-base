@@ -7,7 +7,6 @@
 
 namespace simialbi\yii2\widgets;
 
-use marqu3s\summernote\Summernote;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -36,14 +35,17 @@ class CommentInput extends InputWidget
         ]
     ];
     /**
-     * @var boolean Use rich text field (summernote) instead of default textarea. The package
-     * "simialbi/yii2-summernote" is needed to use this feature.
+     * @var boolean Use rich text field (summernote / froala etc) instead of default textarea.
      */
     public $richTextField = false;
     /**
-     * @var array Summernote plugin options
+     * @var string Rich text field class name
      */
-    public $summernoteClientOptions = [];
+    public $rtfFqcn = '\marqu3s\summernote\Summernote';
+    /**
+     * @var array Rich text field plugin options
+     */
+    public $rtfClientOptions = [];
     /**
      * @var array|boolean the HTML attributes for the image wrapper tag. Set to false to disable wrapping
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -72,9 +74,27 @@ class CommentInput extends InputWidget
     public function init(): void
     {
         parent::init();
-        if ($this->richTextField && !class_exists('marqu3s\summernote\Summernote')) {
-            throw new InvalidConfigException("The package 'simialbi/yii2-summernote' is needed to use this feature.");
+        
+        if ($this->richTextField && !class_exists($this->rtfFqcn)) {
+            throw new InvalidConfigException("The class '{$this->rtfFqcn}' is needed to use this feature.");
         }
+    }
+
+    /**
+     * Getter for deprecated summernote client options
+     */
+    public function getSummernoteClientOptions(): array
+    {
+        return $this->rtfClientOptions;
+    }
+
+    /**
+     * Setter for deprecated summernote client options
+     * @param $options
+     * @return void
+     */
+    public function setSummernoteClientOptions($options) {
+        $this->rtfClientOptions = $options;
     }
 
     /**
@@ -96,29 +116,19 @@ class CommentInput extends InputWidget
             $image .= $this->imageWrapperOptions ? Html::endTag('div') : '';
         }
         if ($this->richTextField) {
-            $css = <<<CSS
-.input-group > .note-editor {
-    flex: 1 1 auto;
-    margin-bottom: 0;
-    min-width: 0;
-    width: 1%;
-}
-CSS;
-            $this->view->registerCss($css, [], 'input-group-summernote');
-
             if ($this->hasModel()) {
-                $input = Summernote::widget([
+                $input = $this->rtfFqcn::widget([
                     'model' => $this->model,
                     'attribute' => $this->attribute,
                     'options' => $options,
-                    'clientOptions' => $this->summernoteClientOptions
+                    'clientOptions' => $this->rtfClientOptions
                 ]);
             } else {
-                $input = Summernote::widget([
+                $input = $this->rtfFqcn::widget([
                     'name' => $this->name,
                     'value' => $this->value,
                     'options' => $this->options,
-                    'clientOptions' => $this->summernoteClientOptions
+                    'clientOptions' => $this->rtfClientOptions
                 ]);
             }
         } else {
@@ -153,9 +163,6 @@ CSS;
         CommentInputAsset::register($view);
         if (empty($selector)) {
             $selector = "#$id";
-        }
-        if ($this->richTextField) {
-            $selector .= ' + .note-editor > .note-editing-area > .note-editable';
         }
         $view->registerJs("$pluginName(jQuery('$selector'));");
     }
