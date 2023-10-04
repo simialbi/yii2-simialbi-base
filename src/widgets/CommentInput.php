@@ -145,7 +145,7 @@ class CommentInput extends InputWidget
         $button .= $this->buttonWrapperOptions ? Html::endTag('div') : '';
 
         return strtr($template, [
-            '{beginWrapper}' => Html::beginTag('div', ['class' => 'input-group']),
+            '{beginWrapper}' => Html::beginTag('div', ['class' => ['input-group', 'flex-nowrap']]),
             '{image}' => $image,
             '{input}' => $input,
             '{submit}' => $button,
