@@ -133,6 +133,9 @@ var target = \$('#' + options.compareAttribute);
 if (!target.length) {
     target = \$form.find('[name="' + options.compareAttributeName + '"]');
 }
+if (!target.length) {
+    target = \$('#' + attribute.id.replace(/{$attribute}$/, '{$this->compareAttribute}'));
+}
 compareValue = target.val();
 
 var t1 = moment(value, '{$this->format}').unix();
