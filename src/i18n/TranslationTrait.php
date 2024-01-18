@@ -33,7 +33,7 @@ trait TranslationTrait
         $category = str_replace(StringHelper::basename(static::class), '', static::class);
         $category = rtrim(str_replace(['\\', 'yii2/', 'widgets', 'models'], ['/', ''], $category), '/') . '*';
 
-        if (!is_dir($dir)) {
+        if (!is_dir($dir) || isset(Yii::$app->i18n->tanslations[$category])) {
             return;
         }
 
