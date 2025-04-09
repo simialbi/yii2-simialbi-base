@@ -37,7 +37,7 @@ interface ProviderInterface
      * @param array $params the parameters (name-value pairs) that will be extracted and made available in the view file.
      * @return MessageInterface message instance.
      */
-    public function compose(string $view = null, array $params = []): MessageInterface;
+    public function compose(?string $view = null, array $params = []): MessageInterface;
 
     /**
      * Sends the given sms message.

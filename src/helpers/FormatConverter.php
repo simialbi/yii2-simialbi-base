@@ -69,7 +69,7 @@ class FormatConverter extends \yii\helpers\FormatConverter
      * If not given, `Yii::$app->language` will be used.
      * @return string The converted date format pattern.
      */
-    public static function convertDateIcuToMoment(string $pattern, string $type = 'date', string $locale = null): string
+    public static function convertDateIcuToMoment(string $pattern, string $type = 'date', ?string $locale = null): string
     {
         if (isset(self::$_icuShortFormats[$pattern])) {
             if (extension_loaded('intl')) {

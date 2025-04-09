@@ -95,7 +95,7 @@ interface MessageInterface
      * If null, the "smsProvider" application component will be used instead.
      * @return boolean whether this message is sent successfully.
      */
-    public function send(ProviderInterface $provider = null): bool;
+    public function send(?ProviderInterface $provider = null): bool;
 
     /**
      * Returns string representation of this message.

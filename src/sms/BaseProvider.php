@@ -103,7 +103,7 @@ abstract class BaseProvider extends Component implements ProviderInterface, View
      * {@inheritDoc}
      * @throws InvalidConfigException
      */
-    public function compose(string $view = null, array $params = []): MessageInterface
+    public function compose(?string $view = null, array $params = []): MessageInterface
     {
         $message = $this->createMessage();
         if ($view === null) {

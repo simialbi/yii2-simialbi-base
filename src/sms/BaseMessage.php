@@ -40,7 +40,7 @@ abstract class BaseMessage implements MessageInterface
      * {@inheritDoc}
      * @throws \yii\base\InvalidConfigException
      */
-    public function send(ProviderInterface $provider = null): bool
+    public function send(?ProviderInterface $provider = null): bool
     {
         if ($provider === null && $this->provider === null) {
             $provider = Yii::$app->get('smsProvider');
