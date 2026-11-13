@@ -53,7 +53,7 @@ interface MessageInterface
      * @param string|null $from sender phone number.
      * @return $this self reference.
      */
-    public function setFrom(string $from = null): MessageInterface;
+    public function setFrom(?string $from = null): MessageInterface;
 
     /**
      * Returns the message recipient(s).
